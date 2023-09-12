@@ -1,0 +1,5 @@
+^LICENSE\.md$
+^app\.R$
+^init\.R$
+^deployment\.R$
+data-raw/
