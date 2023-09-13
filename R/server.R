@@ -16,7 +16,7 @@ server <- function(input, output, session) {
         {
             plot_estimates(
                 gg_shape = estimates,
-                terms = input$term,
+                terms = levels(estimates$term)[unlist(lapply(input$term, grep, levels(estimates$term)))],
                 approach = input$method,
                 outcome = input$outcome
             )

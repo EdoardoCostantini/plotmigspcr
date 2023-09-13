@@ -114,32 +114,34 @@ ui_call <- function() {
                                 <br>
                                 "
                             ),
-                            shiny::checkboxGroupInput(
+                            shiny::selectInput(
                                 "method",
                                 "Missing data treatment",
+                                multiple = TRUE,
                                 choices = levels(estimates$method),
                                 selected = levels(estimates$method)
                             ),
-                            shiny::checkboxGroupInput(
+                            shiny::selectInput(
                                 "outcome",
                                 "Outcome measure",
+                                multiple = TRUE,
                                 choices = levels(estimates$variable)[-1],
                                 selected = c("estimate", "t", "fmi")
                             ),
                             shiny::checkboxGroupInput(
                                 "term",
                                 "Parameters",
-                                choices = levels(estimates$term)[-1],
-                                selected = levels(estimates$term)[-1]
-                            )
+                                choices = unique(gsub("\\.(.*)", "", levels(estimates$term)[-1])),
+                                selected = unique(gsub("\\.(.*)", "", levels(estimates$term)[-1]))
+                            ),
+                            style = "border-right: 1px solid; border-right-color: #DDDDDD"
                         ),
                         shiny::column(
                             width = 9,
                             shiny::HTML(
                                 "<br>"
                             ),
-                            shiny::plotOutput("estimates"),
-                            style = "border-left: 1px solid; border-left-color: #DDDDDD"
+                            shiny::plotOutput("estimates")
                         )
                     )
                 )
