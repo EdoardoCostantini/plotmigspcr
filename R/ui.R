@@ -93,7 +93,8 @@ ui_call <- function() {
                                     shiny::HTML("Imputation density plot for MI-Expert"),
                                     shiny::plotOutput("density_expert")
                                 )
-                            )
+                            ),
+                            style = "border-left: 1px solid; border-left-color: #DDDDDD"
                         )
                     )
                 ),
