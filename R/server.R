@@ -8,7 +8,6 @@
 #' @author Edoardo Costantini, 2023
 #' @export
 server <- function(input, output, session) {
-
     # Parameter estimates plots ------------------------------------------------
 
     output$estimates <- renderPlot(
@@ -28,7 +27,7 @@ server <- function(input, output, session) {
 
     output$trace_migspcr <- renderPlot(
         res = 96,
-        height = 725/2,
+        height = 725 / 2,
         {
             plot(
                 mids_migspcr,
@@ -41,7 +40,7 @@ server <- function(input, output, session) {
 
     output$trace_expert <- renderPlot(
         res = 96,
-        height = 725/2,
+        height = 725 / 2,
         {
             plot(
                 mids_miexpert,
@@ -52,5 +51,33 @@ server <- function(input, output, session) {
         }
     )
 
+    # Convergence plots --------------------------------------------------------
 
+    output$density_migspcr <- renderPlot(
+        res = 96,
+        height = 725 / 2,
+        {
+            # Density plots
+            lattice::densityplot(
+                mids_migspcr,
+                data = as.formula(paste0("~ ", input$variable, " | .imp")),
+                xlab = "",
+                ylab = ""
+            )
+        }
+    )
+
+    output$density_expert <- renderPlot(
+        res = 96,
+        height = 725 / 2,
+        {
+            # Density plots
+            lattice::densityplot(
+                mids_miexpert,
+                data = as.formula(paste0("~ ", input$variable, " | .imp")),
+                xlab = "",
+                ylab = ""
+            )
+        }
+    )
 }

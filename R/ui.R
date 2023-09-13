@@ -74,11 +74,26 @@ ui_call <- function() {
                         ),
                         shiny::column(
                             width = 9,
-                            shiny::HTML("<br>Trace plot for MI-GSPCR"),
-                            shiny::plotOutput("trace_migspcr"),
-                            shiny::HTML("Trace plot for MI-Expert"),
-                            shiny::plotOutput("trace_expert"),
-                            style = "border-left: 1px solid; border-left-color: #DDDDDD"
+                            shiny::HTML(
+                                "<br>"
+                            ),
+                            shiny::tabsetPanel(
+                                type = "tabs",
+                                shiny::tabPanel(
+                                    title = "Convergence checks",
+                                    shiny::HTML("<br>Trace plot for MI-GSPCR"),
+                                    shiny::plotOutput("trace_migspcr"),
+                                    shiny::HTML("Trace plot for MI-Expert"),
+                                    shiny::plotOutput("trace_expert")
+                                ),
+                                shiny::tabPanel(
+                                    title = "Density plots",
+                                    shiny::HTML("<br>Imputation density for MI-GSPCR"),
+                                    shiny::plotOutput("density_migspcr"),
+                                    shiny::HTML("Imputation density plot for MI-Expert"),
+                                    shiny::plotOutput("density_expert")
+                                )
+                            )
                         )
                     )
                 ),
