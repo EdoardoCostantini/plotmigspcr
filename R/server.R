@@ -32,8 +32,7 @@ server <- function(input, output, session) {
             plot(
                 mids_migspcr,
                 input$variable,
-                layout = c(2, 1),
-                xlim = input$iters
+                layout = c(2, 1)
             )
         }
     )
@@ -45,11 +44,18 @@ server <- function(input, output, session) {
             plot(
                 mids_miexpert,
                 input$variable,
-                layout = c(2, 1),
-                xlim = input$iters
+                layout = c(2, 1)
             )
         }
     )
+
+    output$univariate_method_migspcr <- renderPrint({
+        cat(mids_migspcr$method[input$variable])
+    })
+
+    output$univariate_method_miexpert <- renderPrint({
+        cat(mids_miexpert$method[input$variable])
+    })
 
     # Convergence plots --------------------------------------------------------
 

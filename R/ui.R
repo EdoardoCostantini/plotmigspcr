@@ -63,13 +63,14 @@ ui_call <- function() {
                                 label = "Variable",
                                 choices = names(which(rowSums(is.nan(mids_migspcr$chainMean)) == 0))
                             ),
-                            shinyWidgets::sliderTextInput(
-                                inputId = "iters",
-                                label = "Iteration range",
-                                hide_min_max = TRUE,
-                                choices = 0:20,
-                                selected = c(0, 20),
-                                grid = FALSE
+                            shiny::HTML(
+                                "<b>Univariate imputation methods:</b><br>"
+                            ),
+                            shiny::HTML(
+                                paste0("- <code>", textOutput("univariate_method_migspcr", inline = TRUE), "</code> in MI-GSPCR<br>")
+                            ),
+                            shiny::HTML(
+                                paste0("- <code>", textOutput("univariate_method_miexpert", inline = TRUE), "</code> in MI-expert")
                             )
                         ),
                         shiny::column(
