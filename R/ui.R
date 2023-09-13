@@ -51,17 +51,33 @@ ui_call <- function() {
                     shiny::fluidRow(
                         shiny::column(
                             width = 3,
-                            # Simulation study: Description --------------------
                             shiny::HTML(
                                 "<br>
                                     This tab allows you to plot the results of the simulation study reported in the article.
                                     You change the values of the experimental factors to plot the results you are most interested in.
                                     <br>
                                     <br>"
+                            ),
+                            shiny::selectInput(
+                                inputId = "variable",
+                                label = "Variable",
+                                choices = names(which(rowSums(is.nan(mids_migspcr$chainMean)) == 0))
+                            ),
+                            shinyWidgets::sliderTextInput(
+                                inputId = "iters",
+                                label = "Iteration range",
+                                hide_min_max = TRUE,
+                                choices = 0:20,
+                                selected = c(0, 20),
+                                grid = FALSE
                             )
                         ),
                         shiny::column(
                             width = 9,
+                            shiny::HTML("<br>Trace plot for MI-GSPCR"),
+                            shiny::plotOutput("trace_migspcr"),
+                            shiny::HTML("Trace plot for MI-Expert"),
+                            shiny::plotOutput("trace_expert"),
                             style = "border-left: 1px solid; border-left-color: #DDDDDD"
                         )
                     )

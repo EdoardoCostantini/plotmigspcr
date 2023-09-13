@@ -24,4 +24,33 @@ server <- function(input, output, session) {
         }
     )
 
+    # Convergence plots --------------------------------------------------------
+
+    output$trace_migspcr <- renderPlot(
+        res = 96,
+        height = 725/2,
+        {
+            plot(
+                mids_migspcr,
+                input$variable,
+                layout = c(2, 1),
+                xlim = input$iters
+            )
+        }
+    )
+
+    output$trace_expert <- renderPlot(
+        res = 96,
+        height = 725/2,
+        {
+            plot(
+                mids_miexpert,
+                input$variable,
+                layout = c(2, 1),
+                xlim = input$iters
+            )
+        }
+    )
+
+
 }

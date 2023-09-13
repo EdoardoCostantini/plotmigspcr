@@ -23,3 +23,29 @@
 #' @usage data(estimates)
 #' @format data.frame, long
 NULL
+
+#' mids_migspcr
+#'
+#' A mids object containing the information about the imputation performed with MI-GSPCR
+#'
+#' See \link[mice]{mids-class} help file for details.
+#'
+#' @docType data
+#' @keywords datasets
+#' @name mids_migspcr
+#' @usage data(mids_migspcr)
+#' @format mids
+NULL
+
+#' mids_miexpert
+#'
+#' A mids object containing the information about the imputation performed with MI-expert
+#'
+#' See \link[mice]{mids-class} help file for details.
+#'
+#' @docType data
+#' @keywords datasets
+#' @name mids_miexpert
+#' @usage data(mids_miexpert)
+#' @format mids
+NULL
