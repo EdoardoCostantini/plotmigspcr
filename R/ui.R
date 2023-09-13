@@ -53,8 +53,11 @@ ui_call <- function() {
                             width = 3,
                             shiny::HTML(
                                 "<br>
-                                    This tab allows you to plot the results of the simulation study reported in the article.
-                                    You change the values of the experimental factors to plot the results you are most interested in.
+                                    This tab allows you to investigate the diagnostic plots for MI-GSPCR and MI-expert.
+                                    Plots are displayed per variable.
+                                    You change which variable is considered by typing or selecting a variable of interest in dropdown menu.
+                                    The unviariate imputation method used for the variable considered is reported below.
+                                    Check out the <code>mice</code> help file to for more information.
                                     <br>
                                     <br>"
                             ),
