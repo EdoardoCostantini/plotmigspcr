@@ -53,7 +53,7 @@ ui_call <- function() {
                             width = 3,
                             shiny::HTML(
                                 "<br>
-                                    This tab allows you to investigate the diagnostic plots for MI-GSPCR and MI-expert.
+                                    This tab allows you to investigate the <b>diagnostic plots</b> for MI-GSPCR and MI-expert.
                                     Plots are displayed per variable.
                                     You change which variable is considered by typing or selecting a variable of interest in dropdown menu.
                                     The unviariate imputation method used for the variable considered is reported below.
