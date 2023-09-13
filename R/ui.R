@@ -130,6 +130,9 @@ ui_call <- function() {
                         ),
                         shiny::column(
                             width = 9,
+                            shiny::HTML(
+                                "<br>"
+                            ),
                             shiny::plotOutput("estimates"),
                             style = "border-left: 1px solid; border-left-color: #DDDDDD"
                         )
