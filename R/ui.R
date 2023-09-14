@@ -70,10 +70,10 @@ ui_call <- function() {
                                 "<b>Univariate imputation methods:</b><br>"
                             ),
                             shiny::HTML(
-                                paste0("- <code>", textOutput("univariate_method_migspcr", inline = TRUE), "</code> in MI-GSPCR<br>")
+                                paste0("- <code>", shiny::textOutput("univariate_method_migspcr", inline = TRUE), "</code> in MI-GSPCR<br>")
                             ),
                             shiny::HTML(
-                                paste0("- <code>", textOutput("univariate_method_miexpert", inline = TRUE), "</code> in MI-expert")
+                                paste0("- <code>", shiny::textOutput("univariate_method_miexpert", inline = TRUE), "</code> in MI-expert")
                             )
                         ),
                         shiny::column(
