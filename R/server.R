@@ -8,6 +8,31 @@
 #' @author Edoardo Costantini, 2023
 #' @export
 server <- function(input, output, session) {
+
+    # Update inputs ------------------------------------------------------------
+
+    # Next variable
+    shiny::observeEvent(input$next_vairable, {
+        updateSelectInput(
+            session, 
+            inputId = "variable",
+            label = "Variable",
+            choices = names(which(rowSums(is.nan(mids_migspcr$chainMean)) == 0)),
+            selected = names(which(rowSums(is.nan(mids_migspcr$chainMean)) == 0))[which(names(which(rowSums(is.nan(mids_migspcr$chainMean)) == 0)) %in% input$variable)+1]
+        )
+    })
+
+    # Previous variable
+    shiny::observeEvent(input$previous_vairable, {
+        updateSelectInput(
+            session,
+            inputId = "variable",
+            label = "Variable",
+            choices = names(which(rowSums(is.nan(mids_migspcr$chainMean)) == 0)),
+            selected = names(which(rowSums(is.nan(mids_migspcr$chainMean)) == 0))[which(names(which(rowSums(is.nan(mids_migspcr$chainMean)) == 0)) %in% input$variable) - 1]
+        )
+    })
+    
     # Parameter estimates plots ------------------------------------------------
 
     output$estimates <- renderPlot(
@@ -82,6 +107,32 @@ server <- function(input, output, session) {
                 mids_miexpert,
                 data = as.formula(paste0("~ ", input$variable, " | .imp")),
                 xlab = "",
+                ylab = ""
+            )
+        }
+    )
+
+    # Box plots ----------------------------------------------------------------
+
+    output$bwplot_migspcr <- renderPlot(
+        res = 96,
+        height = 725 / 2,
+        {
+            lattice::bwplot(
+                mids_migspcr,
+                data = as.formula(paste0(input$variable, "~.imp")),
+                ylab = ""
+            )
+        }
+    )
+
+    output$bwplot_expert <- renderPlot(
+        res = 96,
+        height = 725 / 2,
+        {
+            lattice::bwplot(
+                mids_miexpert,
+                data = as.formula(paste0(input$variable, "~.imp")),
                 ylab = ""
             )
         }
