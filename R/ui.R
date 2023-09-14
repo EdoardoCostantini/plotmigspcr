@@ -66,14 +66,22 @@ ui_call <- function() {
                                 label = "Variable",
                                 choices = names(which(rowSums(is.nan(mids_migspcr$chainMean)) == 0))
                             ),
-                            shiny::HTML(
-                                "<b>Univariate imputation methods:</b><br>"
+                            shiny::actionButton(
+                                inputId = "previous_vairable",
+                                label = "Previous"
+                            ),
+                            shiny::actionButton(
+                                inputId = "next_vairable",
+                                label = "Next"
                             ),
                             shiny::HTML(
-                                paste0("- <code>", textOutput("univariate_method_migspcr", inline = TRUE), "</code> in MI-GSPCR<br>")
+                                "<br><br><b>Univariate imputation methods:</b><br>"
                             ),
                             shiny::HTML(
-                                paste0("- <code>", textOutput("univariate_method_miexpert", inline = TRUE), "</code> in MI-expert")
+                                paste0("- <code>", shiny::textOutput("univariate_method_migspcr", inline = TRUE), "</code> in MI-GSPCR<br>")
+                            ),
+                            shiny::HTML(
+                                paste0("- <code>", shiny::textOutput("univariate_method_miexpert", inline = TRUE), "</code> in MI-expert")
                             )
                         ),
                         shiny::column(
@@ -96,6 +104,13 @@ ui_call <- function() {
                                     shiny::plotOutput("density_migspcr"),
                                     shiny::HTML("<b>Panel D</b>. Imputation density plot for MI-Expert"),
                                     shiny::plotOutput("density_expert")
+                                ),
+                                shiny::tabPanel(
+                                    title = "Box-and-whiskers plots",
+                                    shiny::HTML("<br><b>Panel E.</b> Box-and-whiskers plot for MI-GSPCR"),
+                                    shiny::plotOutput("bwplot_migspcr"),
+                                    shiny::HTML("<b>Panel F</b>. Box-and-whiskers plot for MI-Expert"),
+                                    shiny::plotOutput("bwplot_expert")
                                 )
                             ),
                             style = "border-left: 1px solid; border-left-color: #DDDDDD"
