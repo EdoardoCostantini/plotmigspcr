@@ -57,7 +57,7 @@ server <- function(input, output, session) {
         cat(mids_miexpert$method[input$variable])
     })
 
-    # Convergence plots --------------------------------------------------------
+    # Density plots ------------------------------------------------------------
 
     output$density_migspcr <- renderPlot(
         res = 96,
