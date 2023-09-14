@@ -66,8 +66,16 @@ ui_call <- function() {
                                 label = "Variable",
                                 choices = names(which(rowSums(is.nan(mids_migspcr$chainMean)) == 0))
                             ),
+                            shiny::actionButton(
+                                inputId = "previous_vairable",
+                                label = "Previous"
+                            ),
+                            shiny::actionButton(
+                                inputId = "next_vairable",
+                                label = "Next"
+                            ),
                             shiny::HTML(
-                                "<b>Univariate imputation methods:</b><br>"
+                                "<br><br><b>Univariate imputation methods:</b><br>"
                             ),
                             shiny::HTML(
                                 paste0("- <code>", shiny::textOutput("univariate_method_migspcr", inline = TRUE), "</code> in MI-GSPCR<br>")
