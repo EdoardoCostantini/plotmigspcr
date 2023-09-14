@@ -104,6 +104,13 @@ ui_call <- function() {
                                     shiny::plotOutput("density_migspcr"),
                                     shiny::HTML("<b>Panel D</b>. Imputation density plot for MI-Expert"),
                                     shiny::plotOutput("density_expert")
+                                ),
+                                shiny::tabPanel(
+                                    title = "Box-and-whiskers plots",
+                                    shiny::HTML("<br><b>Panel E.</b> Box-and-whiskers plot for MI-GSPCR"),
+                                    shiny::plotOutput("bwplot_migspcr"),
+                                    shiny::HTML("<b>Panel F</b>. Box-and-whiskers plot for MI-Expert"),
+                                    shiny::plotOutput("bwplot_expert")
                                 )
                             ),
                             style = "border-left: 1px solid; border-left-color: #DDDDDD"
