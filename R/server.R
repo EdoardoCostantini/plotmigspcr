@@ -111,4 +111,30 @@ server <- function(input, output, session) {
             )
         }
     )
+
+    # Box plots ----------------------------------------------------------------
+
+    output$bwplot_migspcr <- renderPlot(
+        res = 96,
+        height = 725 / 2,
+        {
+            lattice::bwplot(
+                mids_migspcr,
+                data = as.formula(paste0(input$variable, "~.imp")),
+                ylab = ""
+            )
+        }
+    )
+
+    output$bwplot_expert <- renderPlot(
+        res = 96,
+        height = 725 / 2,
+        {
+            lattice::bwplot(
+                mids_miexpert,
+                data = as.formula(paste0(input$variable, "~.imp")),
+                ylab = ""
+            )
+        }
+    )
 }
