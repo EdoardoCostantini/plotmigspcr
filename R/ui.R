@@ -138,7 +138,7 @@ ui_call <- function() {
                             ),
                             shiny::selectInput(
                                 "outcome",
-                                "Outcome measure",
+                                "Outcome measures",
                                 multiple = TRUE,
                                 choices = levels(estimates$variable)[-1],
                                 selected = c("estimate", "t", "fmi")
