@@ -134,14 +134,14 @@ ui_call <- function() {
                                 "Missing data treatment",
                                 multiple = TRUE,
                                 choices = levels(estimates$method),
-                                selected = levels(estimates$method)
+                                selected = levels(estimates$method)[1:2]
                             ),
                             shiny::selectInput(
                                 "outcome",
                                 "Outcome measure",
                                 multiple = TRUE,
                                 choices = levels(estimates$variable)[-1],
-                                selected = c("estimate", "t", "fmi")
+                                selected = levels(estimates$variable)[c(2:5, 10)]
                             ),
                             shiny::checkboxGroupInput(
                                 "term",
