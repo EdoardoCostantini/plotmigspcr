@@ -12,7 +12,7 @@ ui_call <- function() {
         # App title
         shiny::titlePanel(
             shiny::h1(
-                "Multiple Imputation with GSPCR: a case study",
+                "Multiple Imputation with GSPCR: A Case Study",
                 align = "center"
             )
         ),
@@ -134,14 +134,14 @@ ui_call <- function() {
                                 "Missing data treatment",
                                 multiple = TRUE,
                                 choices = levels(estimates$method),
-                                selected = levels(estimates$method)
+                                selected = levels(estimates$method)[1:2]
                             ),
                             shiny::selectInput(
                                 "outcome",
-                                "Outcome measure",
+                                "Outcome measures",
                                 multiple = TRUE,
                                 choices = levels(estimates$variable)[-1],
-                                selected = c("estimate", "t", "fmi")
+                                selected = levels(estimates$variable)[c(2:5, 10)]
                             ),
                             shiny::checkboxGroupInput(
                                 "term",

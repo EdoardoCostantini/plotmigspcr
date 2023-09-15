@@ -1,6 +1,6 @@
 # Shiny app: plot mi-gscpr results
 
-This Shiny app allows you to interact with the results in the study [Multiple Imputation with GSPCR: a case study](https://github.com/EdoardoCostantini/mi-gspcr-evs).
+This Shiny app allows you to interact with the results in the study [Multiple Imputation with GSPCR: A Case Study](https://github.com/EdoardoCostantini/mi-gspcr-evs).
 
 ## 1. Installing the Shiny app as an R package
 
