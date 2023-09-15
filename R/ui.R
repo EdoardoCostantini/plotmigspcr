@@ -12,7 +12,7 @@ ui_call <- function() {
         # App title
         shiny::titlePanel(
             shiny::h1(
-                "Multiple Imputation with GSPCR: a case study",
+                "Multiple Imputation with GSPCR: A Case Study",
                 align = "center"
             )
         ),
