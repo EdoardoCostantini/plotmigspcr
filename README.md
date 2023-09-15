@@ -1,12 +1,32 @@
 # Shiny app: plot mi-gscpr results
 
-This Shiny app allows you to interact with the results in the study [Multiple Imputation with GSPCR: A Case Study](https://github.com/EdoardoCostantini/mi-gspcr-evs).
+An interactive dashboard to interact with the results of a research paper.
 
-## 1. Installing the Shiny app as an R package
+## Code Example
 
-You can install the Shiny app by using one of the methods described below.
+To start the shiny apps and interact with the plots, open an R session and load the package:
 
-### 1.1 Install from GitHub
+```
+library("plotmigspcr")
+```
+
+Then, run the following command in the R console:
+
+```
+start_app()
+```
+
+The app interface will explain how to interact with it.
+
+## Motivation
+
+This Shiny app allows you to interact with the results of the research paper asosciated with the GitHub project [Multiple Imputation with GSPCR: A Case Study](https://github.com/EdoardoCostantini/mi-gspcr-evs).
+
+## Installation
+
+You can install the Shiny app as an R package by using one of the methods described below.
+
+### Install from GitHub
 
 1. Open an R session.
 
@@ -22,7 +42,7 @@ You can install the Shiny app by using one of the methods described below.
     devtools::install_github("https://github.com/EdoardoCostantini/plotmigspcr")
     ```
 
-### 1.2 Install from a local folder
+### Install from a local folder
 
 1. Download the package from GitHub or [Zenodo](https://doi.org/10.5281/zenodo.7879867).
 
@@ -48,18 +68,14 @@ You can install the Shiny app by using one of the methods described below.
     )
     ```
 
-## 2. Using the Shiny app
+## Tests
 
-To start the shiny apps and interact with the plots, open an R session and load the package:
+Describe and show how to run the tests with code examples is coming soon.
 
-```
-library("plotmigspcr")
-```
+## Contributors
 
-Then, run the following command in the R console:
+- [Edoardo Costantini](https://github.com/EdoardoCostantini)
 
-```
-start_app()
-```
+## License
 
-The app interface will explain how to interact with it.
+![[LICENSE]]
