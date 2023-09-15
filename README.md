@@ -70,7 +70,7 @@ You can install the Shiny app as an R package by using one of the methods descri
 
 ## Tests
 
-Describe and show how to run the tests with code examples is coming soon.
+Description and demonstration of how to run tests (with code examples) is coming soon.
 
 ## Contributors
 
