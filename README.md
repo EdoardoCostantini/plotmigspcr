@@ -1,12 +1,32 @@
 # Shiny app: plot mi-gscpr results
 
-This Shiny app allows you to interact with the results in the study [Multiple Imputation with GSPCR: A Case Study](https://github.com/EdoardoCostantini/mi-gspcr-evs).
+An interactive dashboard to interact with the results of a research paper.
 
-## 1. Installing the Shiny app as an R package
+## Code Example
 
-You can install the Shiny app by using one of the methods described below.
+To start the shiny apps and interact with the plots, open an R session and load the package:
 
-### 1.1 Install from GitHub
+```
+library("plotmigspcr")
+```
+
+Then, run the following command in the R console:
+
+```
+start_app()
+```
+
+The app interface will explain how to interact with it.
+
+## Motivation
+
+This Shiny app allows you to interact with the results of the research paper asosciated with the GitHub project [Multiple Imputation with GSPCR: A Case Study](https://github.com/EdoardoCostantini/mi-gspcr-evs).
+
+## Installation
+
+You can install the Shiny app as an R package by using one of the methods described below.
+
+### Install from GitHub
 
 1. Open an R session.
 
@@ -22,7 +42,7 @@ You can install the Shiny app by using one of the methods described below.
     devtools::install_github("https://github.com/EdoardoCostantini/plotmigspcr")
     ```
 
-### 1.2 Install from a local folder
+### Install from a local folder
 
 1. Download the package from GitHub or [Zenodo](https://doi.org/10.5281/zenodo.7879867).
 
@@ -48,18 +68,32 @@ You can install the Shiny app by using one of the methods described below.
     )
     ```
 
-## 2. Using the Shiny app
+## Tests
 
-To start the shiny apps and interact with the plots, open an R session and load the package:
+Description and demonstration of how to run tests (with code examples) is coming soon.
 
-```
-library("plotmigspcr")
-```
+## Contributors
 
-Then, run the following command in the R console:
+- [Edoardo Costantini](https://github.com/EdoardoCostantini)
 
-```
-start_app()
-```
+## MIT License
 
-The app interface will explain how to interact with it.
+Copyright (c) 2023 Edoardo Costantini ("Author")
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
