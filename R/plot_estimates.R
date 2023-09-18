@@ -4,6 +4,10 @@
 #'
 #' @return Returns the ggplot
 #' @author Edoardo Costantini, 2023
+#' @param gg_shape Data in a long form (same as \link[plotmigspcr]{estimates})
+#' @param terms Character vector naming the predictors for which you want to plot the regression coefficient estimates. Possible values are `levels(estimates$term)`
+#' @param approach Character vector naming the missing data handling techniques you want to plot. Possible values are `levels(estimates$method)`
+#' @param outcome Character vector naming the outcome measures you want to plot. Possible values are `levels(estimates$variable)`
 #' @examples
 #' plot_estimates(
 #'      gg_shape = estimates,

@@ -6,6 +6,15 @@
 \usage{
 plot_estimates(gg_shape, terms, approach, outcome)
 }
+\arguments{
+\item{gg_shape}{Data in a long form (same as \link[plotmigspcr]{estimates})}
+
+\item{terms}{Character vector naming the predictors for which you want to plot the regression coefficient estimates. Possible values are \code{levels(estimates$term)}}
+
+\item{approach}{Character vector naming the missing data handling techniques you want to plot. Possible values are \code{levels(estimates$method)}}
+
+\item{outcome}{Character vector naming the outcome measures you want to plot. Possible values are \code{levels(estimates$variable)}}
+}
 \value{
 Returns the ggplot
 }
