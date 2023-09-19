@@ -13,7 +13,7 @@ server <- function(input, output, session) {
 
     # Next variable
     shiny::observeEvent(input$next_vairable, {
-        updateSelectInput(
+        shiny::updateSelectInput(
             session, 
             inputId = "variable",
             label = "Variable",
@@ -24,7 +24,7 @@ server <- function(input, output, session) {
 
     # Previous variable
     shiny::observeEvent(input$previous_vairable, {
-        updateSelectInput(
+        shiny::updateSelectInput(
             session,
             inputId = "variable",
             label = "Variable",
@@ -35,7 +35,7 @@ server <- function(input, output, session) {
     
     # Parameter estimates plots ------------------------------------------------
 
-    output$estimates <- renderPlot(
+    output$estimates <- shiny::renderPlot(
         res = 96,
         height = 725,
         {
@@ -50,7 +50,7 @@ server <- function(input, output, session) {
 
     # Convergence plots --------------------------------------------------------
 
-    output$trace_migspcr <- renderPlot(
+    output$trace_migspcr <- shiny::renderPlot(
         res = 96,
         height = 725 / 2,
         {
@@ -62,7 +62,7 @@ server <- function(input, output, session) {
         }
     )
 
-    output$trace_expert <- renderPlot(
+    output$trace_expert <- shiny::renderPlot(
         res = 96,
         height = 725 / 2,
         {
@@ -74,38 +74,38 @@ server <- function(input, output, session) {
         }
     )
 
-    output$univariate_method_migspcr <- renderPrint({
+    output$univariate_method_migspcr <- shiny::renderPrint({
         cat(mids_migspcr$method[input$variable])
     })
 
-    output$univariate_method_miexpert <- renderPrint({
+    output$univariate_method_miexpert <- shiny::renderPrint({
         cat(mids_miexpert$method[input$variable])
     })
 
     # Density plots ------------------------------------------------------------
 
-    output$density_migspcr <- renderPlot(
+    output$density_migspcr <- shiny::renderPlot(
         res = 96,
         height = 725 / 2,
         {
             # Density plots
             lattice::densityplot(
                 mids_migspcr,
-                data = as.formula(paste0("~ ", input$variable, " | .imp")),
+                data = stats::as.formula(paste0("~ ", input$variable, " | .imp")),
                 xlab = "",
                 ylab = ""
             )
         }
     )
 
-    output$density_expert <- renderPlot(
+    output$density_expert <- shiny::renderPlot(
         res = 96,
         height = 725 / 2,
         {
             # Density plots
             lattice::densityplot(
                 mids_miexpert,
-                data = as.formula(paste0("~ ", input$variable, " | .imp")),
+                data = stats::as.formula(paste0("~ ", input$variable, " | .imp")),
                 xlab = "",
                 ylab = ""
             )
@@ -114,25 +114,25 @@ server <- function(input, output, session) {
 
     # Box plots ----------------------------------------------------------------
 
-    output$bwplot_migspcr <- renderPlot(
+    output$bwplot_migspcr <- shiny::renderPlot(
         res = 96,
         height = 725 / 2,
         {
             lattice::bwplot(
                 mids_migspcr,
-                data = as.formula(paste0(input$variable, "~.imp")),
+                data = stats::as.formula(paste0(input$variable, "~.imp")),
                 ylab = ""
             )
         }
     )
 
-    output$bwplot_expert <- renderPlot(
+    output$bwplot_expert <- shiny::renderPlot(
         res = 96,
         height = 725 / 2,
         {
             lattice::bwplot(
                 mids_miexpert,
-                data = as.formula(paste0(input$variable, "~.imp")),
+                data = stats::as.formula(paste0(input$variable, "~.imp")),
                 ylab = ""
             )
         }
