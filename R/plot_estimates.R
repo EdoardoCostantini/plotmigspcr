@@ -20,16 +20,18 @@
 plot_estimates <- function(gg_shape, terms, approach, outcome) {
     gg_shape %>%
         dplyr::filter(
-            term %in% terms,
-            variable %in% outcome,
-            method %in% approach
+            .data$term %in% terms,
+            .data$variable %in% outcome,
+            .data$method %in% approach
         ) %>%
-        dplyr::mutate(value = abs(value)) %>%
+        dplyr::mutate(
+            value = abs(.data$value)
+        ) %>%
         ggplot(
             aes(
-                x = term,
-                y = value,
-                fill = method
+                x = .data$term,
+                y = .data$value,
+                fill = .data$method
             )
         ) +
         scale_fill_manual(values = c("#aaaaaa", "#D4D4D4", "#ffffff")) +

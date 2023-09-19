@@ -15,5 +15,6 @@
 #' @importFrom ggplot2 scale_fill_manual
 #' @importFrom ggplot2 theme
 #' @importFrom ggplot2 unit
+#' @importFrom rlang .data
 ## usethis namespace: end
 NULL
