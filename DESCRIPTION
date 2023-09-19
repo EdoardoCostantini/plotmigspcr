@@ -17,11 +17,7 @@ Imports:
     ggplot2,
     lattice,
     mice,
-    pkgload,
-    shiny,
-    shinybrowser,
-    shinyWidgets,
-    usethis
+    shiny
 Suggests: 
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
