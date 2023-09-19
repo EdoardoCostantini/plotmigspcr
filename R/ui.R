@@ -64,7 +64,7 @@ ui_call <- function() {
                             shiny::selectInput(
                                 inputId = "variable",
                                 label = "Variable",
-                                choices = names(which(rowSums(is.nan(mids_migspcr$chainMean)) == 0))
+                                choices = names(which(rowSums(is.nan(plotmigspcr::mids_migspcr$chainMean)) == 0))
                             ),
                             shiny::actionButton(
                                 inputId = "previous_vairable",
@@ -133,21 +133,21 @@ ui_call <- function() {
                                 "method",
                                 "Missing data treatment",
                                 multiple = TRUE,
-                                choices = levels(estimates$method),
-                                selected = levels(estimates$method)[1:2]
+                                choices = levels(plotmigspcr::estimates$method),
+                                selected = levels(plotmigspcr::estimates$method)[1:2]
                             ),
                             shiny::selectInput(
                                 "outcome",
                                 "Outcome measures",
                                 multiple = TRUE,
-                                choices = levels(estimates$variable)[-1],
-                                selected = levels(estimates$variable)[c(2:5, 10)]
+                                choices = levels(plotmigspcr::estimates$variable)[-1],
+                                selected = levels(plotmigspcr::estimates$variable)[c(2:5, 10)]
                             ),
                             shiny::checkboxGroupInput(
                                 "term",
                                 "Parameters",
-                                choices = unique(gsub("\\.(.*)", "", levels(estimates$term)[-1])),
-                                selected = unique(gsub("\\.(.*)", "", levels(estimates$term)[-1]))
+                                choices = unique(gsub("\\.(.*)", "", levels(plotmigspcr::estimates$term)[-1])),
+                                selected = unique(gsub("\\.(.*)", "", levels(plotmigspcr::estimates$term)[-1]))
                             ),
                             style = "border-right: 1px solid; border-right-color: #DDDDDD"
                         ),

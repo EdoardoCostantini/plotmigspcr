@@ -17,8 +17,8 @@ server <- function(input, output, session) {
             session, 
             inputId = "variable",
             label = "Variable",
-            choices = names(which(rowSums(is.nan(mids_migspcr$chainMean)) == 0)),
-            selected = names(which(rowSums(is.nan(mids_migspcr$chainMean)) == 0))[which(names(which(rowSums(is.nan(mids_migspcr$chainMean)) == 0)) %in% input$variable)+1]
+            choices = names(which(rowSums(is.nan(plotmigspcr::mids_migspcr$chainMean)) == 0)),
+            selected = names(which(rowSums(is.nan(plotmigspcr::mids_migspcr$chainMean)) == 0))[which(names(which(rowSums(is.nan(plotmigspcr::mids_migspcr$chainMean)) == 0)) %in% input$variable)+1]
         )
     })
 
@@ -28,8 +28,8 @@ server <- function(input, output, session) {
             session,
             inputId = "variable",
             label = "Variable",
-            choices = names(which(rowSums(is.nan(mids_migspcr$chainMean)) == 0)),
-            selected = names(which(rowSums(is.nan(mids_migspcr$chainMean)) == 0))[which(names(which(rowSums(is.nan(mids_migspcr$chainMean)) == 0)) %in% input$variable) - 1]
+            choices = names(which(rowSums(is.nan(plotmigspcr::mids_migspcr$chainMean)) == 0)),
+            selected = names(which(rowSums(is.nan(plotmigspcr::mids_migspcr$chainMean)) == 0))[which(names(which(rowSums(is.nan(plotmigspcr::mids_migspcr$chainMean)) == 0)) %in% input$variable) - 1]
         )
     })
     
@@ -40,8 +40,8 @@ server <- function(input, output, session) {
         height = 725,
         {
             plot_estimates(
-                gg_shape = estimates,
-                terms = levels(estimates$term)[unlist(lapply(input$term, grep, levels(estimates$term)))],
+                gg_shape = plotmigspcr::estimates,
+                terms = levels(plotmigspcr::estimates$term)[unlist(lapply(input$term, grep, levels(plotmigspcr::estimates$term)))],
                 approach = input$method,
                 outcome = input$outcome
             )
@@ -54,8 +54,8 @@ server <- function(input, output, session) {
         res = 96,
         height = 725 / 2,
         {
-            plot(
-                mids_migspcr,
+            mice::plot(
+                plotmigspcr::mids_migspcr,
                 input$variable,
                 layout = c(2, 1)
             )
@@ -66,8 +66,8 @@ server <- function(input, output, session) {
         res = 96,
         height = 725 / 2,
         {
-            plot(
-                mids_miexpert,
+            mice::plot(
+                plotmigspcr::mids_miexpert,
                 input$variable,
                 layout = c(2, 1)
             )
@@ -75,11 +75,11 @@ server <- function(input, output, session) {
     )
 
     output$univariate_method_migspcr <- shiny::renderPrint({
-        cat(mids_migspcr$method[input$variable])
+        cat(plotmigspcr::mids_migspcr$method[input$variable])
     })
 
     output$univariate_method_miexpert <- shiny::renderPrint({
-        cat(mids_miexpert$method[input$variable])
+        cat(plotmigspcr::mids_miexpert$method[input$variable])
     })
 
     # Density plots ------------------------------------------------------------
@@ -90,7 +90,7 @@ server <- function(input, output, session) {
         {
             # Density plots
             lattice::densityplot(
-                mids_migspcr,
+                plotmigspcr::mids_migspcr,
                 data = stats::as.formula(paste0("~ ", input$variable, " | .imp")),
                 xlab = "",
                 ylab = ""
@@ -104,7 +104,7 @@ server <- function(input, output, session) {
         {
             # Density plots
             lattice::densityplot(
-                mids_miexpert,
+                plotmigspcr::mids_miexpert,
                 data = stats::as.formula(paste0("~ ", input$variable, " | .imp")),
                 xlab = "",
                 ylab = ""
@@ -119,7 +119,7 @@ server <- function(input, output, session) {
         height = 725 / 2,
         {
             lattice::bwplot(
-                mids_migspcr,
+                plotmigspcr::mids_migspcr,
                 data = stats::as.formula(paste0(input$variable, "~.imp")),
                 ylab = ""
             )
@@ -131,7 +131,7 @@ server <- function(input, output, session) {
         height = 725 / 2,
         {
             lattice::bwplot(
-                mids_miexpert,
+                plotmigspcr::mids_miexpert,
                 data = stats::as.formula(paste0(input$variable, "~.imp")),
                 ylab = ""
             )
