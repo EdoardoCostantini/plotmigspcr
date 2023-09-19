@@ -89,7 +89,7 @@ server <- function(input, output, session) {
         height = 725 / 2,
         {
             # Density plots
-            lattice::densityplot(
+            mice::densityplot(
                 plotmigspcr::mids_migspcr,
                 data = stats::as.formula(paste0("~ ", input$variable, " | .imp")),
                 xlab = "",
@@ -103,7 +103,7 @@ server <- function(input, output, session) {
         height = 725 / 2,
         {
             # Density plots
-            lattice::densityplot(
+            mice::densityplot(
                 plotmigspcr::mids_miexpert,
                 data = stats::as.formula(paste0("~ ", input$variable, " | .imp")),
                 xlab = "",
@@ -118,7 +118,7 @@ server <- function(input, output, session) {
         res = 96,
         height = 725 / 2,
         {
-            lattice::bwplot(
+            mice::bwplot(
                 plotmigspcr::mids_migspcr,
                 data = stats::as.formula(paste0(input$variable, "~.imp")),
                 ylab = ""
@@ -130,7 +130,7 @@ server <- function(input, output, session) {
         res = 96,
         height = 725 / 2,
         {
-            lattice::bwplot(
+            mice::bwplot(
                 plotmigspcr::mids_miexpert,
                 data = stats::as.formula(paste0(input$variable, "~.imp")),
                 ylab = ""
