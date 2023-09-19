@@ -54,7 +54,7 @@ server <- function(input, output, session) {
         res = 96,
         height = 725 / 2,
         {
-            mice::plot(
+            plot(
                 plotmigspcr::mids_migspcr,
                 input$variable,
                 layout = c(2, 1)
@@ -66,7 +66,7 @@ server <- function(input, output, session) {
         res = 96,
         height = 725 / 2,
         {
-            mice::plot(
+            plot(
                 plotmigspcr::mids_miexpert,
                 input$variable,
                 layout = c(2, 1)
