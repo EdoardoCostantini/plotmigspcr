@@ -70,7 +70,22 @@ You can install the Shiny app as an R package by using one of the methods descri
 
 ## Tests
 
-Description and demonstration of how to run tests (with code examples) is coming soon.
+### Unit tests
+
+**Unit tests** to test whether the functions behave as expected. This tests are performed by using the `test()` fucntion from the `devtools` R package.
+The workflow is the one established by the `testthat` R package.
+To run these tests:
+1. Install the `devtools` R package, if you do not have it already.
+
+    ``` r
+    install.packages("devtools")
+    ```
+
+2. Then, you can the test with the following command in the R console:
+
+    ``` r
+    devtools::test()
+    ```
 
 ## Contributors
 

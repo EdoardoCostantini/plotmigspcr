@@ -2,4 +2,5 @@
 ^app\.R$
 ^init\.R$
 ^deployment\.R$
+rsconnect/
 data-raw/
