@@ -16,21 +16,21 @@
 plot_trace <- function(data, var) {
     data %>%
         filter(
-            variable == var
+            .data$variable == var
         ) %>%
         ggplot2::ggplot(
             ggplot2::aes(
-                x = iteration,
-                y = value,
-                group = chain
+                x = .data$iteration,
+                y = .data$value,
+                group = .data$chain
             )
         ) +
         ggplot2::geom_line(
-            ggplot2::aes(color = chain)
+            ggplot2::aes(color = .data$chain)
         ) +
         ggplot2::facet_grid(
-            rows = vars(measure),
-            cols = vars(method),
+            rows = vars(.data$measure),
+            cols = vars(.data$method),
             scales = "free"
         ) +
         ggplot2::theme(
