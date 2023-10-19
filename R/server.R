@@ -74,6 +74,17 @@ server <- function(input, output, session) {
         }
     )
 
+    output$ggplot_trace <- shiny::renderPlot(
+        res = 96,
+        height = 725,
+        {
+            plot_trace(
+                data = plotmigspcr::mids_chains,
+                var = input$variable
+            )
+        }
+    )
+
     output$univariate_method_migspcr <- shiny::renderPrint({
         cat(plotmigspcr::mids_migspcr$method[input$variable])
     })

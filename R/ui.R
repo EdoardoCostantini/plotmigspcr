@@ -99,6 +99,10 @@ ui_call <- function() {
                                     shiny::plotOutput("trace_expert")
                                 ),
                                 shiny::tabPanel(
+                                    title = "Convergence checks with ggplot",
+                                    shiny::plotOutput("ggplot_trace")
+                                ),
+                                shiny::tabPanel(
                                     title = "Density plots",
                                     shiny::HTML("<br><b>Panel C.</b> Imputation density for MI-GSPCR"),
                                     shiny::plotOutput("density_migspcr"),

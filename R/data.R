@@ -49,3 +49,16 @@ NULL
 #' @usage data(mids_miexpert)
 #' @format mids
 NULL
+
+#' mids_chains
+#'
+#' A data.frame containing chain means and standard deviations for plotting trace plots with ggplot
+#'
+#' See \link[mice]{mids-class} help file for details.
+#'
+#' @docType data
+#' @keywords datasets
+#' @name mids_chains
+#' @usage data(mids_chains)
+#' @format data.frame
+NULL
