@@ -20,8 +20,7 @@ Generate trace plots with ggplot.
 \examples{
 plot_trace(
     data = mids_chains,
-    variable = "v1",
-    iterations = c(1:20)
+    var = "v1"
 )
 }
 \author{
