@@ -92,11 +92,15 @@ ui_call <- function() {
                             shiny::tabsetPanel(
                                 type = "tabs",
                                 shiny::tabPanel(
-                                    title = "Convergence checks",
+                                    title = "Convergence checks with mice",
                                     shiny::HTML("<br><b>Panel A.</b> Trace plot for MI-GSPCR"),
                                     shiny::plotOutput("trace_migspcr"),
                                     shiny::HTML("<b>Panel B</b>. Trace plot for MI-Expert"),
                                     shiny::plotOutput("trace_expert")
+                                ),
+                                shiny::tabPanel(
+                                    title = "Convergence checks with ggplot",
+                                    shiny::plotOutput("ggplot_trace")
                                 ),
                                 shiny::tabPanel(
                                     title = "Density plots",
