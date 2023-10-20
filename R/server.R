@@ -76,7 +76,7 @@ server <- function(input, output, session) {
 
     output$ggplot_trace <- shiny::renderPlot(
         res = 96,
-        height = 725,
+        height = 500,
         {
             plot_trace(
                 data = plotmigspcr::mids_chains,
