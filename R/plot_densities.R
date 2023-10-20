@@ -41,9 +41,16 @@ plot_densities <- function(data, var) {
             )
         ) +
         ggplot2::scale_y_continuous(position = "right") +
-        ggplot2::xlim(
-            min(imps_ggplot_active$value) - .5,
-            max(imps_ggplot_active$value) + .5
+        ggplot2::scale_x_continuous(
+            breaks = seq(
+                from = min(imps_ggplot_active$value),
+                to = max(imps_ggplot_active$value),
+                by = 1
+            ),
+            limits = c(
+                min(imps_ggplot_active$value) - .5,
+                max(imps_ggplot_active$value) + .5
+            )
         ) +
         ggplot2::theme(
             axis.title.y = ggplot2::element_blank(),
@@ -58,7 +65,7 @@ plot_densities <- function(data, var) {
             # explicitly set the horizontal lines (or they will disappear too)
             panel.grid.major.y = ggplot2::element_line(
                 linewidth = .1,
-                color = "black"
+                color = "#00000045"
             ),
             # Legend
             legend.position = "none",

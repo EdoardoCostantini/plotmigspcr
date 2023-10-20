@@ -48,7 +48,7 @@ plot_trace <- function(data, var) {
             # explicitly set the horizontal lines (or they will disappear too)
             panel.grid.major.y = ggplot2::element_line(
                 linewidth = .1,
-                color = "black"
+                color = "#00000045"
             ),
             # Legend
             legend.position = "none",
