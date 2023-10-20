@@ -23,16 +23,24 @@ plot_densities <- function(data, var) {
         ggplot2::ggplot(
             ggplot2::aes(
                 x = value,
-                group = group
+                color = group
             )
         ) +
-        ggplot2::geom_density(adjust = 1) +
+        ggplot2::geom_density(
+            adjust = 1
+        ) +
         ggplot2::facet_grid(
-            rows = vars(method),
-            cols = vars(group),
+            cols = vars(method),
+            # rows = vars(group),
             switch = "y"
         ) +
-        ggplot2::scale_y_continuous(position = "right") + 
+        ggplot2::scale_color_manual(
+            values = c(
+                "#3780C6",
+                rep("#00000054", length(unique(data$.imp)) - 1)
+            )
+        ) +
+        ggplot2::scale_y_continuous(position = "right") +
         ggplot2::xlim(
             min(imps_ggplot_active$value) - .5,
             max(imps_ggplot_active$value) + .5
