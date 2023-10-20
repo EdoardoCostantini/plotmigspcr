@@ -147,7 +147,7 @@ imps_ggplot$group <- factor(
     levels = unique(imps_ggplot$group),
     labels = c(
         "Observed data",
-        paste0("Impuated values (Chain ", seq(1:(length(unique(imps_ggplot$group)) - 1)), ")")
+        paste0("Imputation chain ", seq(1:(length(unique(imps_ggplot$group)) - 1)))
     )
 )
 
