@@ -58,6 +58,13 @@ mids_chains <- rbind(
     sm_expert_long
 )
 
+# Fix order of methods
+mids_chains$method <- factor(
+    mids_chains$method,
+    levels = unique(mids_chains$method),
+    labels = c("MI-GSPCR", "MI-Expert")
+)
+
 # Prepare density data ---------------------------------------------------------
 
 # Create a list of the mids objects
