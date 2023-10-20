@@ -92,33 +92,12 @@ ui_call <- function() {
                             shiny::tabsetPanel(
                                 type = "tabs",
                                 shiny::tabPanel(
-                                    title = "Convergence checks with mice",
-                                    shiny::HTML("<br><b>Panel A.</b> Trace plot for MI-GSPCR"),
-                                    shiny::plotOutput("trace_migspcr"),
-                                    shiny::HTML("<b>Panel B</b>. Trace plot for MI-Expert"),
-                                    shiny::plotOutput("trace_expert")
-                                ),
-                                shiny::tabPanel(
-                                    title = "Convergence checks with ggplot",
+                                    title = "Convergence checks",
                                     shiny::plotOutput("ggplot_trace")
                                 ),
                                 shiny::tabPanel(
                                     title = "Density plots",
-                                    shiny::HTML("<br><b>Panel C.</b> Imputation density for MI-GSPCR"),
-                                    shiny::plotOutput("density_migspcr"),
-                                    shiny::HTML("<b>Panel D</b>. Imputation density plot for MI-Expert"),
-                                    shiny::plotOutput("density_expert")
-                                ),
-                                shiny::tabPanel(
-                                    title = "Density plots with ggplot",
                                     shiny::plotOutput("density_ggplot")
-                                ),
-                                shiny::tabPanel(
-                                    title = "Box-and-whiskers plots",
-                                    shiny::HTML("<br><b>Panel E.</b> Box-and-whiskers plot for MI-GSPCR"),
-                                    shiny::plotOutput("bwplot_migspcr"),
-                                    shiny::HTML("<b>Panel F</b>. Box-and-whiskers plot for MI-Expert"),
-                                    shiny::plotOutput("bwplot_expert")
                                 )
                             ),
                             style = "border-left: 1px solid; border-left-color: #DDDDDD"
