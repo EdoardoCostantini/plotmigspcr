@@ -29,8 +29,10 @@ plot_densities <- function(data, var) {
         ggplot2::geom_density(adjust = 1) +
         ggplot2::facet_grid(
             rows = vars(method),
-            cols = vars(group)
+            cols = vars(group),
+            switch = "y"
         ) +
+        ggplot2::scale_y_continuous(position = "right") + 
         ggplot2::xlim(
             min(imps_ggplot_active$value) - .5,
             max(imps_ggplot_active$value) + .5

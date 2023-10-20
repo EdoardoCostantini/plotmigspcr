@@ -31,8 +31,10 @@ plot_trace <- function(data, var) {
         ggplot2::facet_grid(
             rows = vars(.data$measure),
             cols = vars(.data$method),
-            scales = "free"
+            scales = "free",
+            switch = "y"
         ) +
+        ggplot2::scale_y_continuous(position = "right") + 
         ggplot2::theme(
             axis.title.y = ggplot2::element_blank(),
             # Grid
