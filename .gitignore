@@ -3,3 +3,6 @@
 
 # Ignore published shiny app
 *.dcf
+
+# Ignore Mac OS hidden files
+.DS_store
