@@ -58,9 +58,103 @@ mids_chains <- rbind(
     sm_expert_long
 )
 
+# Prepare density data ---------------------------------------------------------
+
+# Create a list of the mids objects
+mids_list <- list(
+    gspcr = mids_migspcr,
+    expert = mids_miexpert
+)
+
+# Apply to each mids object the same processing steps
+imps_list <- lapply(1:length(mids_list), function(i) {
+    # Extract imputations in long format
+    imps <- data.frame(mice::complete(mids_list[[i]], "long", include = TRUE))
+
+    # Create a matrix of response indicators
+    RI <- is.na(mids_list[[i]]$data)
+
+    # Create an empty list to store intermediate objects
+    shelf <- list()
+
+    # Loop over the variables
+    for (j in 1:ncol(RI)) {
+        if (any(RI[, j])) {
+            # What variable are we considering
+            J <- colnames(RI)[j]
+
+            # Keep only the .imp identifier and the variable value
+            active_data <- imps[, c(".imp", J)]
+
+            # Make active variable numeric
+            active_data[, J] <- as.numeric(active_data[, J])
+
+            # attach the response indicator
+            active_data <- cbind(
+                active_data,
+                miss = RI[, J]
+            )
+
+            # Melt values
+            ad_melt <- reshape2::melt(active_data, id.vars = c(".imp", "miss"))
+
+            # Make variable numeric
+            ad_melt$value
+
+            # Filter by dropping all of the cases that are observed from the non 0 groups
+            ad_melt_imps <- ad_melt %>%
+                filter(
+                    .imp != 0,
+                    miss == TRUE
+                )
+
+            # Filter by dropping all cases that are missing in the observed data
+            ad_melt_obs <- ad_melt %>%
+                filter(
+                    .imp == 0,
+                    miss == FALSE
+                )
+
+            # Store the result
+            shelf[[j]] <- rbind(ad_melt_obs, ad_melt_imps)
+        }
+    }
+
+    # Combine the results from the many variables
+    imps_ggplot <- do.call(rbind, shelf)
+
+    # Attach a variable with the method name
+    cbind(imps_ggplot, method = names(mids_list)[i])
+
+})
+
+# Collapse the data from the different methods in a single data.frame
+imps_ggplot <- do.call(rbind, imps_list)
+
+# Make the method variable a factor with meaningful names
+imps_ggplot$method <- factor(
+    imps_ggplot$method,
+    levels = unique(imps_ggplot$method),
+    labels = c("MI-GSPCR", "MI-Expert")
+)
+
+# Create a grouping variable for the densities
+imps_ggplot$group <- paste0(imps_ggplot$.imp, imps_ggplot$miss)
+
+# Make the grouping variable a factor with meaningful labels
+imps_ggplot$group <- factor(
+    imps_ggplot$group,
+    levels = unique(imps_ggplot$group),
+    labels = c(
+        "Observed data",
+        paste0("Impuated values (Chain ", seq(1:(length(unique(imps_ggplot$group)) - 1)), ")")
+    )
+)
+
 # Specify use in app -----------------------------------------------------------
 
 usethis::use_data(estimates, overwrite = TRUE, compress = "bzip2")
 usethis::use_data(mids_chains, overwrite = TRUE, compress = "bzip2")
+usethis::use_data(imps_ggplot, overwrite = TRUE, compress = "bzip2")
 usethis::use_data(mids_migspcr, overwrite = TRUE, compress = "bzip2")
 usethis::use_data(mids_miexpert, overwrite = TRUE, compress = "bzip2")

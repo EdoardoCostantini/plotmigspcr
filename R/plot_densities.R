@@ -1,0 +1,58 @@
+#' Plot densities of the imputed values
+#'
+#' Generate density plots with ggplot.
+#'
+#' @return Returns the ggplot
+#' @author Edoardo Costantini, 2023
+#' @param data data.frame in long form (same as \link[plotmigspcr]{imps_ggplot})
+#' @param var Character vector indicating which variable should be plotted.
+#' @examples
+#' plot_densities(
+#'     data = imps_ggplot,
+#'     var = "v1"
+#' )
+#' @export
+
+plot_densities <- function(data, var) {
+    # Active data for plot
+    imps_ggplot_active <- data %>%
+        filter(variable == var)
+
+    # Make the plot
+    imps_ggplot_active %>%
+        ggplot2::ggplot(
+            ggplot2::aes(
+                x = value,
+                group = group
+            )
+        ) +
+        ggplot2::geom_density(adjust = 1) +
+        ggplot2::facet_grid(
+            rows = vars(method),
+            cols = vars(group)
+        ) +
+        ggplot2::xlim(
+            min(imps_ggplot_active$value) - .5,
+            max(imps_ggplot_active$value) + .5
+        ) +
+        ggplot2::theme(
+            axis.title.y = ggplot2::element_blank(),
+            # Grid
+            panel.border = ggplot2::element_rect(
+                color = "#D4D4D4",
+                fill = NA,
+                linewidth = .5
+            ),
+            # remove the vertical grid lines
+            panel.grid.major.x = ggplot2::element_blank(),
+            # explicitly set the horizontal lines (or they will disappear too)
+            panel.grid.major.y = ggplot2::element_line(
+                linewidth = .1,
+                color = "black"
+            ),
+            # Legend
+            legend.position = "none",
+            # Background
+            panel.background = ggplot2::element_rect(fill = NA, color = "gray")
+        )
+}

@@ -95,6 +95,18 @@ server <- function(input, output, session) {
 
     # Density plots ------------------------------------------------------------
 
+    output$density_ggplot <- shiny::renderPlot(
+        res = 96,
+        height = 500,
+        {
+            # Density plots
+            plot_densities(
+                data = plotmigspcr::imps_ggplot,
+                var = input$variable
+            )
+        }
+    )
+
     output$density_migspcr <- shiny::renderPlot(
         res = 96,
         height = 725 / 2,

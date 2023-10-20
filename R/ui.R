@@ -110,6 +110,10 @@ ui_call <- function() {
                                     shiny::plotOutput("density_expert")
                                 ),
                                 shiny::tabPanel(
+                                    title = "Density plots with ggplot",
+                                    shiny::plotOutput("density_ggplot")
+                                ),
+                                shiny::tabPanel(
                                     title = "Box-and-whiskers plots",
                                     shiny::HTML("<br><b>Panel E.</b> Box-and-whiskers plot for MI-GSPCR"),
                                     shiny::plotOutput("bwplot_migspcr"),
