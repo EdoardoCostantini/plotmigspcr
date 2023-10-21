@@ -4,22 +4,22 @@
 #'
 #' @return Returns the ggplot
 #' @author Edoardo Costantini, 2023
-#' @param data data.frame in long form (same as \link[plotmigspcr]{imps_ggplot})
+#' @param data data.frame in long form (same as \link[plotmigspcr]{mids_imputations})
 #' @param var Character vector indicating which variable should be plotted.
 #' @examples
 #' plot_densities(
-#'     data = imps_ggplot,
+#'     data = mids_imputations,
 #'     var = "v1"
 #' )
 #' @export
 
 plot_densities <- function(data, var) {
     # Active data for plot
-    imps_ggplot_active <- data %>%
+    mids_imputations_active <- data %>%
         filter(.data$variable == var)
 
     # Make the plot
-    imps_ggplot_active %>%
+    mids_imputations_active %>%
         ggplot2::ggplot(
             ggplot2::aes(
                 x = .data$value,
@@ -43,13 +43,13 @@ plot_densities <- function(data, var) {
         ggplot2::scale_y_continuous(position = "right") +
         ggplot2::scale_x_continuous(
             breaks = seq(
-                from = min(imps_ggplot_active$value),
-                to = max(imps_ggplot_active$value),
+                from = min(mids_imputations_active$value),
+                to = max(mids_imputations_active$value),
                 by = 1
             ),
             limits = c(
-                min(imps_ggplot_active$value) - .5,
-                max(imps_ggplot_active$value) + .5
+                min(mids_imputations_active$value) - .5,
+                max(mids_imputations_active$value) + .5
             )
         ) +
         ggplot2::theme(

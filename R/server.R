@@ -17,8 +17,8 @@ server <- function(input, output, session) {
             session, 
             inputId = "variable",
             label = "Variable",
-            choices = levels(plotmigspcr::imps_ggplot$variable),
-            selected = levels(plotmigspcr::imps_ggplot$variable)[which(levels(plotmigspcr::imps_ggplot$variable) %in% input$variable)+1]
+            choices = levels(plotmigspcr::mids_imputations$variable),
+            selected = levels(plotmigspcr::mids_imputations$variable)[which(levels(plotmigspcr::mids_imputations$variable) %in% input$variable)+1]
         )
     })
 
@@ -28,8 +28,8 @@ server <- function(input, output, session) {
             session,
             inputId = "variable",
             label = "Variable",
-            choices = levels(plotmigspcr::imps_ggplot$variable),
-            selected = levels(plotmigspcr::imps_ggplot$variable)[which(levels(plotmigspcr::imps_ggplot$variable) %in% input$variable) - 1]
+            choices = levels(plotmigspcr::mids_imputations$variable),
+            selected = levels(plotmigspcr::mids_imputations$variable)[which(levels(plotmigspcr::mids_imputations$variable) %in% input$variable) - 1]
         )
     })
     
@@ -77,7 +77,7 @@ server <- function(input, output, session) {
         {
             # Density plots
             plot_densities(
-                data = plotmigspcr::imps_ggplot,
+                data = plotmigspcr::mids_imputations,
                 var = input$variable
             )
         }

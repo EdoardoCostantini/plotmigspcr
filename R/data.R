@@ -38,7 +38,7 @@ NULL
 #' @format data.frame
 NULL
 
-#' imps_ggplot
+#' mids_imputations
 #'
 #' A data.frame containing observed values and imputations in long form.
 #' 
@@ -48,8 +48,8 @@ NULL
 #'
 #' @docType data
 #' @keywords datasets
-#' @name imps_ggplot
-#' @usage data(imps_ggplot)
+#' @name mids_imputations
+#' @usage data(mids_imputations)
 #' @format vector
 NULL
 
