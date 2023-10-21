@@ -16,7 +16,6 @@ LazyDataCompression: bzip2
 Imports: 
     dplyr,
     ggplot2,
-    mice,
     rlang,
     shiny
 Suggests: 

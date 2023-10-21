@@ -2,8 +2,12 @@
 # Objective: Prepare and deploy data for app
 # Author:    Edoardo Costantini
 # Created:   2023-09-12
-# Modified:  2023-09-12
+# Modified:  2023-10-21
 # Notes:
+
+# Load packages that are needed only for processing of data --------------------
+
+library(mice)
 
 # Load data --------------------------------------------------------------------
 
@@ -128,40 +132,50 @@ imps_list <- lapply(1:length(mids_list), function(i) {
     }
 
     # Combine the results from the many variables
-    imps_ggplot <- do.call(rbind, shelf)
+    mids_imputations <- do.call(rbind, shelf)
 
     # Attach a variable with the method name
-    cbind(imps_ggplot, method = names(mids_list)[i])
+    cbind(mids_imputations, method = names(mids_list)[i])
 
 })
 
 # Collapse the data from the different methods in a single data.frame
-imps_ggplot <- do.call(rbind, imps_list)
+mids_imputations <- do.call(rbind, imps_list)
 
 # Make the method variable a factor with meaningful names
-imps_ggplot$method <- factor(
-    imps_ggplot$method,
-    levels = unique(imps_ggplot$method),
+mids_imputations$method <- factor(
+    mids_imputations$method,
+    levels = unique(mids_imputations$method),
     labels = c("MI-GSPCR", "MI-Expert")
 )
 
 # Create a grouping variable for the densities
-imps_ggplot$group <- paste0(imps_ggplot$.imp, imps_ggplot$miss)
+mids_imputations$group <- paste0(mids_imputations$.imp, mids_imputations$miss)
 
 # Make the grouping variable a factor with meaningful labels
-imps_ggplot$group <- factor(
-    imps_ggplot$group,
-    levels = unique(imps_ggplot$group),
+mids_imputations$group <- factor(
+    mids_imputations$group,
+    levels = unique(mids_imputations$group),
     labels = c(
         "Observed data",
-        paste0("Imputation chain ", seq(1:(length(unique(imps_ggplot$group)) - 1)))
+        paste0("Imputation chain ", seq(1:(length(unique(mids_imputations$group)) - 1)))
     )
 )
+
+# Method vector ----------------------------------------------------------------
+
+# Store methods for the different imputation procedures together
+imp_methods <- data.frame(
+    migspcr = mids_migspcr$method,
+    miexpert = mids_miexpert$method
+)
+
+# remove variables that are not imputed
+imp_methods <- imp_methods[mids_migspcr$method != "", ]
 
 # Specify use in app -----------------------------------------------------------
 
 usethis::use_data(estimates, overwrite = TRUE, compress = "bzip2")
 usethis::use_data(mids_chains, overwrite = TRUE, compress = "bzip2")
-usethis::use_data(imps_ggplot, overwrite = TRUE, compress = "bzip2")
-usethis::use_data(mids_migspcr, overwrite = TRUE, compress = "bzip2")
-usethis::use_data(mids_miexpert, overwrite = TRUE, compress = "bzip2")
+usethis::use_data(mids_imputations, overwrite = TRUE, compress = "bzip2")
+usethis::use_data(imp_methods, overwrite = TRUE, compress = "bzip2")

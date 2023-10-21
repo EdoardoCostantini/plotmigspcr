@@ -7,7 +7,7 @@
 plot_densities(data, var)
 }
 \arguments{
-\item{data}{data.frame in long form (same as \link[plotmigspcr]{imps_ggplot})}
+\item{data}{data.frame in long form (same as \link[plotmigspcr]{mids_imputations})}
 
 \item{var}{Character vector indicating which variable should be plotted.}
 }
@@ -19,7 +19,7 @@ Generate density plots with ggplot.
 }
 \examples{
 plot_densities(
-    data = imps_ggplot,
+    data = mids_imputations,
     var = "v1"
 )
 }
