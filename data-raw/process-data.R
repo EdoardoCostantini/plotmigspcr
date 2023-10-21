@@ -5,6 +5,10 @@
 # Modified:  2023-10-21
 # Notes:
 
+# Load packages that are needed only for processing of data --------------------
+
+library(mice)
+
 # Load data --------------------------------------------------------------------
 
 # Load estimates results

@@ -13,7 +13,4 @@ data(mids_chains)
 \description{
 A data.frame containing chain means and standard deviations for plotting trace plots with ggplot
 }
-\details{
-See \link[mice]{mids-class} help file for details.
-}
 \keyword{datasets}
