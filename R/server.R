@@ -17,8 +17,8 @@ server <- function(input, output, session) {
             session, 
             inputId = "variable",
             label = "Variable",
-            choices = levels(imps_ggplot$variable),
-            selected = levels(imps_ggplot$variable)[which(levels(imps_ggplot$variable) %in% input$variable)+1]
+            choices = levels(plotmigspcr::imps_ggplot$variable),
+            selected = levels(plotmigspcr::imps_ggplot$variable)[which(levels(plotmigspcr::imps_ggplot$variable) %in% input$variable)+1]
         )
     })
 
@@ -28,8 +28,8 @@ server <- function(input, output, session) {
             session,
             inputId = "variable",
             label = "Variable",
-            choices = levels(imps_ggplot$variable),
-            selected = levels(imps_ggplot$variable)[which(levels(imps_ggplot$variable) %in% input$variable) - 1]
+            choices = levels(plotmigspcr::imps_ggplot$variable),
+            selected = levels(plotmigspcr::imps_ggplot$variable)[which(levels(plotmigspcr::imps_ggplot$variable) %in% input$variable) - 1]
         )
     })
     
@@ -62,11 +62,11 @@ server <- function(input, output, session) {
     )
 
     output$univariate_method_migspcr <- shiny::renderPrint({
-        cat(imp_methods[input$variable])
+        cat(plotmigspcr::imp_methods[input$variable])
     })
 
     output$univariate_method_miexpert <- shiny::renderPrint({
-        cat(imp_methods[input$variable])
+        cat(plotmigspcr::imp_methods[input$variable])
     })
 
     # Density plots ------------------------------------------------------------

@@ -16,21 +16,21 @@
 plot_densities <- function(data, var) {
     # Active data for plot
     imps_ggplot_active <- data %>%
-        filter(variable == var)
+        filter(.data$variable == var)
 
     # Make the plot
     imps_ggplot_active %>%
         ggplot2::ggplot(
             ggplot2::aes(
-                x = value,
-                color = group
+                x = .data$value,
+                color = .data$group
             )
         ) +
         ggplot2::geom_density(
             adjust = 1
         ) +
         ggplot2::facet_grid(
-            cols = vars(method),
+            cols = vars(.data$method),
             # rows = vars(group),
             switch = "y"
         ) +
