@@ -62,11 +62,11 @@ server <- function(input, output, session) {
     )
 
     output$univariate_method_migspcr <- shiny::renderPrint({
-        cat(plotmigspcr::imp_methods[input$variable])
+        cat(plotmigspcr::imp_methods[input$variable, "migspcr"])
     })
 
     output$univariate_method_miexpert <- shiny::renderPrint({
-        cat(plotmigspcr::imp_methods[input$variable])
+        cat(plotmigspcr::imp_methods[input$variable, "miexpert"])
     })
 
     # Density plots ------------------------------------------------------------

@@ -164,7 +164,14 @@ mids_imputations$group <- factor(
 
 # Method vector ----------------------------------------------------------------
 
-imp_methods <- plotmigspcr::mids_migspcr$method
+# Store methods for the different imputation procedures together
+imp_methods <- data.frame(
+    migspcr = mids_migspcr$method,
+    miexpert = mids_miexpert$method
+)
+
+# remove variables that are not imputed
+imp_methods <- imp_methods[mids_migspcr$method != "", ]
 
 # Specify use in app -----------------------------------------------------------
 

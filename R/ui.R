@@ -64,7 +64,7 @@ ui_call <- function() {
                             shiny::selectInput(
                                 inputId = "variable",
                                 label = "Variable",
-                                choices = levels(plotmigspcr::imp_methods$variable)
+                                choices = rownames(plotmigspcr::imp_methods)
                             ),
                             shiny::actionButton(
                                 inputId = "previous_vairable",
