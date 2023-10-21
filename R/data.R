@@ -28,13 +28,26 @@ NULL
 #'
 #' A data.frame containing chain means and standard deviations for plotting trace plots with ggplot
 #'
-#' See \link[mice]{mids-class} help file for details.
-#'
 #' @docType data
 #' @keywords datasets
 #' @name mids_chains
 #' @usage data(mids_chains)
 #' @format data.frame
+NULL
+
+#' imps_ggplot
+#'
+#' A data.frame containing observed values and imputations in long form.
+#' 
+#' @details
+#' These data can be used to plot the density distributions of observed and imputed variables.
+#' It was obtained by extracting the information needed for this type of plot from the mids objects produced by mice after imputation.
+#'
+#' @docType data
+#' @keywords datasets
+#' @name imps_ggplot
+#' @usage data(imps_ggplot)
+#' @format vector
 NULL
 
 #' imp_methods
