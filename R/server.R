@@ -17,8 +17,8 @@ server <- function(input, output, session) {
             session, 
             inputId = "variable",
             label = "Variable",
-            choices = names(which(rowSums(is.nan(plotmigspcr::mids_migspcr$chainMean)) == 0)),
-            selected = names(which(rowSums(is.nan(plotmigspcr::mids_migspcr$chainMean)) == 0))[which(names(which(rowSums(is.nan(plotmigspcr::mids_migspcr$chainMean)) == 0)) %in% input$variable)+1]
+            choices = levels(plotmigspcr::mids_imputations$variable),
+            selected = levels(plotmigspcr::mids_imputations$variable)[which(levels(plotmigspcr::mids_imputations$variable) %in% input$variable)+1]
         )
     })
 
@@ -28,8 +28,8 @@ server <- function(input, output, session) {
             session,
             inputId = "variable",
             label = "Variable",
-            choices = names(which(rowSums(is.nan(plotmigspcr::mids_migspcr$chainMean)) == 0)),
-            selected = names(which(rowSums(is.nan(plotmigspcr::mids_migspcr$chainMean)) == 0))[which(names(which(rowSums(is.nan(plotmigspcr::mids_migspcr$chainMean)) == 0)) %in% input$variable) - 1]
+            choices = levels(plotmigspcr::mids_imputations$variable),
+            selected = levels(plotmigspcr::mids_imputations$variable)[which(levels(plotmigspcr::mids_imputations$variable) %in% input$variable) - 1]
         )
     })
     
@@ -50,33 +50,9 @@ server <- function(input, output, session) {
 
     # Convergence plots --------------------------------------------------------
 
-    output$trace_migspcr <- shiny::renderPlot(
-        res = 96,
-        height = 725 / 2,
-        {
-            plot(
-                plotmigspcr::mids_migspcr,
-                input$variable,
-                layout = c(2, 1)
-            )
-        }
-    )
-
-    output$trace_expert <- shiny::renderPlot(
-        res = 96,
-        height = 725 / 2,
-        {
-            plot(
-                plotmigspcr::mids_miexpert,
-                input$variable,
-                layout = c(2, 1)
-            )
-        }
-    )
-
     output$ggplot_trace <- shiny::renderPlot(
         res = 96,
-        height = 725,
+        height = 500,
         {
             plot_trace(
                 data = plotmigspcr::mids_chains,
@@ -86,65 +62,23 @@ server <- function(input, output, session) {
     )
 
     output$univariate_method_migspcr <- shiny::renderPrint({
-        cat(plotmigspcr::mids_migspcr$method[input$variable])
+        cat(plotmigspcr::imp_methods[input$variable, "migspcr"])
     })
 
     output$univariate_method_miexpert <- shiny::renderPrint({
-        cat(plotmigspcr::mids_miexpert$method[input$variable])
+        cat(plotmigspcr::imp_methods[input$variable, "miexpert"])
     })
 
     # Density plots ------------------------------------------------------------
 
-    output$density_migspcr <- shiny::renderPlot(
+    output$density_ggplot <- shiny::renderPlot(
         res = 96,
-        height = 725 / 2,
+        height = 500,
         {
             # Density plots
-            mice::densityplot(
-                plotmigspcr::mids_migspcr,
-                data = stats::as.formula(paste0("~ ", input$variable, " | .imp")),
-                xlab = "",
-                ylab = ""
-            )
-        }
-    )
-
-    output$density_expert <- shiny::renderPlot(
-        res = 96,
-        height = 725 / 2,
-        {
-            # Density plots
-            mice::densityplot(
-                plotmigspcr::mids_miexpert,
-                data = stats::as.formula(paste0("~ ", input$variable, " | .imp")),
-                xlab = "",
-                ylab = ""
-            )
-        }
-    )
-
-    # Box plots ----------------------------------------------------------------
-
-    output$bwplot_migspcr <- shiny::renderPlot(
-        res = 96,
-        height = 725 / 2,
-        {
-            mice::bwplot(
-                plotmigspcr::mids_migspcr,
-                data = stats::as.formula(paste0(input$variable, "~.imp")),
-                ylab = ""
-            )
-        }
-    )
-
-    output$bwplot_expert <- shiny::renderPlot(
-        res = 96,
-        height = 725 / 2,
-        {
-            mice::bwplot(
-                plotmigspcr::mids_miexpert,
-                data = stats::as.formula(paste0(input$variable, "~.imp")),
-                ylab = ""
+            plot_densities(
+                data = plotmigspcr::mids_imputations,
+                var = input$variable
             )
         }
     )
