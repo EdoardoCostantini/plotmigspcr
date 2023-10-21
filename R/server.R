@@ -17,8 +17,8 @@ server <- function(input, output, session) {
             session, 
             inputId = "variable",
             label = "Variable",
-            choices = names(which(rowSums(is.nan(plotmigspcr::mids_migspcr$chainMean)) == 0)),
-            selected = names(which(rowSums(is.nan(plotmigspcr::mids_migspcr$chainMean)) == 0))[which(names(which(rowSums(is.nan(plotmigspcr::mids_migspcr$chainMean)) == 0)) %in% input$variable)+1]
+            choices = levels(imps_ggplot$variable),
+            selected = levels(imps_ggplot$variable)[which(levels(imps_ggplot$variable) %in% input$variable)+1]
         )
     })
 
@@ -28,8 +28,8 @@ server <- function(input, output, session) {
             session,
             inputId = "variable",
             label = "Variable",
-            choices = names(which(rowSums(is.nan(plotmigspcr::mids_migspcr$chainMean)) == 0)),
-            selected = names(which(rowSums(is.nan(plotmigspcr::mids_migspcr$chainMean)) == 0))[which(names(which(rowSums(is.nan(plotmigspcr::mids_migspcr$chainMean)) == 0)) %in% input$variable) - 1]
+            choices = levels(imps_ggplot$variable),
+            selected = levels(imps_ggplot$variable)[which(levels(imps_ggplot$variable) %in% input$variable) - 1]
         )
     })
     
@@ -62,11 +62,11 @@ server <- function(input, output, session) {
     )
 
     output$univariate_method_migspcr <- shiny::renderPrint({
-        cat(plotmigspcr::mids_migspcr$method[input$variable])
+        cat(imp_methods[input$variable])
     })
 
     output$univariate_method_miexpert <- shiny::renderPrint({
-        cat(plotmigspcr::mids_miexpert$method[input$variable])
+        cat(imp_methods[input$variable])
     })
 
     # Density plots ------------------------------------------------------------
@@ -82,5 +82,4 @@ server <- function(input, output, session) {
             )
         }
     )
-    
 }

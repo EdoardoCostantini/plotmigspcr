@@ -64,7 +64,7 @@ ui_call <- function() {
                             shiny::selectInput(
                                 inputId = "variable",
                                 label = "Variable",
-                                choices = names(which(rowSums(is.nan(plotmigspcr::mids_migspcr$chainMean)) == 0))
+                                choices = levels(imps_ggplot$variable)
                             ),
                             shiny::actionButton(
                                 inputId = "previous_vairable",

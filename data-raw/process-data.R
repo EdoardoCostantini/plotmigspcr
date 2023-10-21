@@ -2,7 +2,7 @@
 # Objective: Prepare and deploy data for app
 # Author:    Edoardo Costantini
 # Created:   2023-09-12
-# Modified:  2023-09-12
+# Modified:  2023-10-21
 # Notes:
 
 # Load data --------------------------------------------------------------------
@@ -158,10 +158,15 @@ imps_ggplot$group <- factor(
     )
 )
 
+# Method vector ----------------------------------------------------------------
+
+imp_methods <- plotmigspcr::mids_migspcr$method
+
 # Specify use in app -----------------------------------------------------------
 
 usethis::use_data(estimates, overwrite = TRUE, compress = "bzip2")
 usethis::use_data(mids_chains, overwrite = TRUE, compress = "bzip2")
 usethis::use_data(imps_ggplot, overwrite = TRUE, compress = "bzip2")
+usethis::use_data(imp_methods, overwrite = TRUE, compress = "bzip2")
 usethis::use_data(mids_migspcr, overwrite = TRUE, compress = "bzip2")
 usethis::use_data(mids_miexpert, overwrite = TRUE, compress = "bzip2")
