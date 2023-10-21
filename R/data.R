@@ -27,6 +27,9 @@ NULL
 #' mids_chains
 #'
 #' A data.frame containing chain means and standard deviations for plotting trace plots with ggplot
+#' @details
+#' These data can be used to plot the progression of imputation means and standard deviations over the iterations.
+#' It was obtained by extracting the information needed for this type of plot from the mids objects produced by mice after imputation.
 #'
 #' @docType data
 #' @keywords datasets
