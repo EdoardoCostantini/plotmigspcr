@@ -4,3 +4,4 @@
 ^deployment\.R$
 rsconnect/
 data-raw/
+^CITATION\.cff$
