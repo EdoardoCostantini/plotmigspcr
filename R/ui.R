@@ -128,7 +128,7 @@ ui_call <- function() {
                                 "Outcome measures",
                                 multiple = TRUE,
                                 choices = levels(plotmigspcr::estimates$variable)[-1],
-                                selected = levels(plotmigspcr::estimates$variable)[c(2:5, 10)]
+                                selected = levels(plotmigspcr::estimates$variable)[c(2:4, 11)]
                             ),
                             shiny::checkboxGroupInput(
                                 "term",
