@@ -2,12 +2,13 @@
 # Objective: Prepare and deploy data for app
 # Author:    Edoardo Costantini
 # Created:   2023-09-12
-# Modified:  2023-10-21
+# Modified:  2024-01-29
 # Notes:
 
 # Load packages that are needed only for processing of data --------------------
 
 library(mice)
+library(dplyr)
 
 # Load data --------------------------------------------------------------------
 
@@ -16,7 +17,7 @@ estimates <- readRDS("./data-raw/estimates-gg-shape.rds")
 
 # Load mids objects for diagnostics
 mids_migspcr <- readRDS("./data-raw/20230817-155605-mids-mi-gspcr.rds")
-mids_miexpert <- readRDS("./data-raw/20230829-100551-mids-mi-expert.rds")
+mids_miexpert <- readRDS("./data-raw/20240126-234235-mids-mi-expert.rds")
 
 # Prepare mids data ------------------------------------------------------------
 
