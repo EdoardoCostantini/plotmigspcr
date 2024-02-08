@@ -21,7 +21,11 @@ mids_miexpert <- readRDS("./data-raw/20240126-234235-mids-mi-expert.rds")
 
 # Prepare estimates data -------------------------------------------------------
 
+# Name of methods
 levels(estimates$method) <- c("MI-GSPCR", "MI-Standard", "CC")
+
+# Names of outcome measures
+levels(estimates$variable)[c(3:4)]  <- c("U", "B")
 
 # Prepare mids data ------------------------------------------------------------
 

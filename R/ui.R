@@ -116,23 +116,21 @@ ui_call <- function() {
                                 <br>
                                 "
                             ),
-                            shiny::selectInput(
+                            shiny::checkboxGroupInput(
                                 "method",
                                 "Missing data treatment",
-                                multiple = TRUE,
                                 choices = levels(plotmigspcr::estimates$method),
                                 selected = levels(plotmigspcr::estimates$method)[1:2]
                             ),
-                            shiny::selectInput(
+                            shiny::checkboxGroupInput(
                                 "outcome",
                                 "Outcome measures",
-                                multiple = TRUE,
-                                choices = levels(plotmigspcr::estimates$variable)[-1],
+                                choices = levels(plotmigspcr::estimates$variable)[c(2:4, 10, 11)],
                                 selected = levels(plotmigspcr::estimates$variable)[c(2:4, 11)]
                             ),
                             shiny::checkboxGroupInput(
                                 "term",
-                                "Parameters",
+                                "Coefficients for",
                                 choices = unique(gsub("\\.(.*)", "", levels(plotmigspcr::estimates$term)[-1])),
                                 selected = unique(gsub("\\.(.*)", "", levels(plotmigspcr::estimates$term)[-1]))
                             ),

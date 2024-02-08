@@ -10,10 +10,10 @@
 #' @param outcome Character vector naming the outcome measures you want to plot. Possible values are `levels(estimates$variable)`
 #' @examples
 #' plot_estimates(
-#'      gg_shape = estimates,
-#'      terms = levels(estimates$term)[-1],
-#'      approach = levels(estimates$method),
-#'      outcome = c("estimate", "t")
+#'     gg_shape = estimates,
+#'     terms = levels(estimates$term)[-1],
+#'     approach = levels(estimates$method),
+#'     outcome = c("estimate", "t")
 #' )
 #' @export
 
@@ -37,15 +37,14 @@ plot_estimates <- function(gg_shape, terms, approach, outcome) {
         scale_fill_manual(values = c("#aaaaaa", "#D4D4D4", "#ffffff")) +
         geom_bar(
             stat = "identity",
-            position = position_dodge(),
-            colour = "black",
-            alpha = 0.75
+            position = ggplot2::position_dodge(),
+            colour = "black"
         ) +
         facet_grid(
             rows = "variable",
             scales = "free",
             switch = "y"
-        ) + 
+        ) +
         theme(
             # X axis layout
             axis.text.x = element_text(
@@ -74,5 +73,9 @@ plot_estimates <- function(gg_shape, terms, approach, outcome) {
             legend.key.size = unit(0.3, "cm"),
             # Background
             panel.background = element_rect(fill = NA, color = "gray")
+        ) +
+        ggplot2::guides(
+            # Add spacing between items in vertical legend
+            fill = ggplot2::guide_legend(byrow = TRUE)
         )
 }
