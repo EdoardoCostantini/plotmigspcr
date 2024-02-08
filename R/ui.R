@@ -12,7 +12,7 @@ ui_call <- function() {
         # App title
         shiny::titlePanel(
             shiny::h1(
-                "Multiple Imputation with GSPCR: A Case Study",
+                "MICE with generalized supervised principal component regression",
                 align = "center"
             )
         ),
@@ -33,7 +33,7 @@ ui_call <- function() {
                             This Shiny app accompanies the paper:
                             <br>
                             <br>
-                            <a href='https://arxiv.org/abs/2206.15107'>Costantini, E., Lang, K. M., Sijtsma, K., & Reeskens, T. (----). Multiple Imputation with Generalised Supervised Principal Components: a Case Study</i>.</a>
+                            <a href=''>Costantini, E., Lang, K. M., Sijtsma, K., & Reeskens, T. (----). MICE with generalized supervised principal component regression</i>.</a>
                             <br>
                             <br>
                             With this app, the user can:
