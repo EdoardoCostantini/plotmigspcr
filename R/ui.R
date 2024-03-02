@@ -33,7 +33,7 @@ ui_call <- function() {
                             This Shiny app accompanies the paper:
                             <br>
                             <br>
-                            <a href=''>Costantini, E., Lang, K. M., Sijtsma, K., & Reeskens, T. (----). MICE with generalized supervised principal component regression</i>.</a>
+                            Costantini, E., Lang, K. M., Sijtsma, K., & Reeskens, T. (in preparation) MICE with generalized supervised principal component regression.
                             <br>
                             <br>
                             With this app, the user can:
@@ -53,7 +53,7 @@ ui_call <- function() {
                             width = 3,
                             shiny::HTML(
                                 "<br>
-                                    This tab allows you to investigate the <b>diagnostic plots</b> for MI-GSPCR and MI-expert.
+                                    This tab allows you to investigate the <b>diagnostic plots</b> for MI-GSPCR and MI-Standard.
                                     Plots are displayed per variable.
                                     You change which variable is considered by typing or selecting a variable of interest in dropdown menu.
                                     The unviariate imputation method used for the variable considered is reported below.
@@ -81,7 +81,7 @@ ui_call <- function() {
                                 paste0("- <code>", shiny::textOutput("univariate_method_migspcr", inline = TRUE), "</code> in MI-GSPCR<br>")
                             ),
                             shiny::HTML(
-                                paste0("- <code>", shiny::textOutput("univariate_method_miexpert", inline = TRUE), "</code> in MI-expert")
+                                paste0("- <code>", shiny::textOutput("univariate_method_miexpert", inline = TRUE), "</code> in MI-Standard")
                             )
                         ),
                         shiny::column(
